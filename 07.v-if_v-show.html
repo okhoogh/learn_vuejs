@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>VueJs测试</title>
+    <script src="node_modules/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <button @click="show = !show">点我</button>
+        <h2 v-if="show">Hello VueJs</h2>
+        <hr>
+        <ul>
+            <li v-for="(user, index) in users" v-if="user.gender=='男'" :key="index" style="background-color: lightblue">
+                {{index}}-{{user.name}}-{{user.age}}-{{user.gender}}
+            </li>
+            <li v-else="user.gender=='女'" :key="index" style="background-color: lightpink">
+                {{index}}-{{user.name}}-{{user.age}}-{{user.gender}}
+            </li>
+        </ul>
+        <hr>
+        <h2 v-show="show">
+            Hello World
+        </h2>
+    </div>
+    <script>
+        var app = new Vue({
+            el: "#app",
+            data: {
+                show: true,
+                users:[
+                    {"name":"张三","age":8,"gender":"男"},
+                    {"name":"李四","age":12,"gender":"女"},
+                    {"name":"酷啊","age":4,"gender":"男"},
+                    {"name":"12啊","age":4,"gender":"女"}
+                ],
+                person:{"name":"智汇", "age":3, "address":"中国"}
+            }
+        });
+    </script>
+</body>
+</html>
